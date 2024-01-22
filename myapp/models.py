@@ -7,8 +7,14 @@ class Position(models.Model):
     def __str__(self):
         return self.title
 
+variation_choice = (
+    ("Leader", "leader"),
+    ("Manager", "manager"),
+    ("Employee", "employee"),
+)
+
 class Employee(models.Model):
     fullname = models.CharField(max_length=100)
     emp_code = models.CharField(max_length=3)
     mobile= models.CharField(max_length=15)
-    position= models.ForeignKey(Position,on_delete=models.CASCADE) 
+    position = models.CharField(max_length=50, choices=variation_choice) 
